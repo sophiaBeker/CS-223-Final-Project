@@ -8,5 +8,5 @@ Features of this Social Media Application:
 * Send a message to another account/username
 
 Additional Features:
-* 
-* 
+* TBA
+* TBA
