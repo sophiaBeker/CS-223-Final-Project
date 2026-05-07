@@ -22,7 +22,7 @@ def load_accounts(self):
         return {}
     
     try: 
-        with open(self.account_file, "r", encoding="utf-8") as file:
+        with open(self.account_file, "r") as file:
             data = json.load(file)
             if isinstance(data, dict):
                 return data
@@ -36,7 +36,7 @@ def load_accounts(self):
 
 def save_accounts(self):
     try: 
-        with open(self.account_file, "w", encoding="utf-8") as file:
+        with open(self.account_file, "w") as file:
             json.dump(self.accounts, file, indent=4)
     except OSError as error:
         print(f"[ERROR] Cannot save account data: {error}")
@@ -44,7 +44,7 @@ def save_accounts(self):
 def msg_file_creation(self): 
     if not os.path.exists(self.message_file):
         try:
-            with open(self.message_file, "w", encoding="utf-8") as file:
+            with open(self.message_file, "w") as file:
                 file.write("Message Log\n")
                 file.write("===========\n")
         except OSError as error:
