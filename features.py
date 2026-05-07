@@ -66,6 +66,8 @@ def timestamp(self):
 # HELPERS
 # username exits, logged in, require login, valid usrname, valid password
 
+def username
+
 # ACCOUNT FEATURES
 # create acct, login, logout, change pass, delete acct, 
 
