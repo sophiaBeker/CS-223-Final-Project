@@ -15,3 +15,20 @@ class SocialMediaApp:
         self.ensure_rqeuired_instructor_account()
         self.ensure_message_file()
 
+# FILE MANAGEMENTS
+def load_accounts(self):
+    if not os.path.exists(self.account_file):
+        return {}
+    
+    try: 
+        with open(self.account_file, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            if isinstance(data, dict):
+                return data
+            print("[ERROR] Account file was not formatted correctly.")
+            return {}
+    except json.JSONDecodeError:
+        print("[ERROR] account_management.json was invalid.")
+    except OSError as error:
+        print("[ERROR] - Could not read file: {error}")
+        return {}
