@@ -49,3 +49,15 @@ def msg_file_creation(self):
                 file.write("===========\n")
         except OSError as error:
             print (f"[ERROR] Could not make message log: {error}")
+
+def ensure_rqeuired_instructor_account(self):
+    if "instructor" not in self.accounts:
+        self.account["instructor"] = {
+            "password": "123",
+            "bio": "instructor's test account"
+            "account_created": self.timestamp();
+        }
+        self.save_accounts()
+
+def timestamp(self):
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
