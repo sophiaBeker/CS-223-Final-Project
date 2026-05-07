@@ -64,11 +64,17 @@ def timestamp(self):
 
 
 # HELPERS
+# username exits, logged in, require login, valid usrname, valid password
 
 # ACCOUNT FEATURES
+# create acct, login, logout, change pass, delete acct, 
+
 
 # MESSAGING FEATURES
+# send msg, read msg
 
 # ADDITIONAL FEATURES OF OUR CHOICE
+# update bio + other feature
 
 # MENU (or move to main?)
+# basic terminal menu 
