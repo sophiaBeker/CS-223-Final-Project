@@ -32,3 +32,10 @@ def load_accounts(self):
     except OSError as error:
         print("[ERROR] - Could not read file: {error}")
         return {}
+
+def save_accounts(self):
+    try: 
+        with open(self.account_file, "w", encoding="utf-8") as file:
+            json.dump(self.accounts, file, indent=4)
+    except OSError as error:
+        print(f"[ERROR] Cannot save account data: {error}")
