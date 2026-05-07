@@ -61,3 +61,14 @@ def ensure_rqeuired_instructor_account(self):
 
 def timestamp(self):
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+# HELPERS
+
+# ACCOUNT FEATURES
+
+# MESSAGING FEATURES
+
+# ADDITIONAL FEATURES OF OUR CHOICE
+
+# MENU (or move to main?)
