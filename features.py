@@ -16,6 +16,7 @@ class SocialMediaApp:
         self.ensure_message_file()
 
 # FILE MANAGEMENTS
+
 def load_accounts(self):
     if not os.path.exists(self.account_file):
         return {}
@@ -39,3 +40,12 @@ def save_accounts(self):
             json.dump(self.accounts, file, indent=4)
     except OSError as error:
         print(f"[ERROR] Cannot save account data: {error}")
+
+def msg_file_creation(self): 
+    if not os.path.exists(self.message_file):
+        try:
+            with open(self.message_file, "w", encoding="utf-8") as file:
+                file.write("Message Log\n")
+                file.write("===========\n")
+        except OSError as error:
+            print (f"[ERROR] Could not make message log: {error}")
