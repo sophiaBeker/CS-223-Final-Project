@@ -69,14 +69,15 @@ def timestamp(self):
 def username
 
 # ACCOUNT FEATURES
-# create acct, login, logout, change pass, delete acct, 
+# create acct, login [fio]
+# logout, change pass, delete acct [sophia]
 
 
 # MESSAGING FEATURES
 # send msg, read msg
 
 # ADDITIONAL FEATURES OF OUR CHOICE
-# update bio + other feature
+# update bio [fio] + other feature [sophia]
 
-# MENU (or move to main?)
-# basic terminal menu 
+# MENU (or move to main?) 
+# basic terminal menu [sophia]
