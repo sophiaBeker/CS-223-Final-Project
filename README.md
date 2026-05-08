@@ -5,7 +5,7 @@ For this assignment, we created an in-terminal social media application that all
 
 ---
 
-## </u>Required Features</u>
+## <u>Required Features</u>
 
 ### Account Management
 Users are able to manage their accounts through the following options:
@@ -20,7 +20,7 @@ Users can communicate with other accounts through a simple terminal-based messag
 
 ---
 
-## </u>Additional Features</u>
+## <u>Additional Features</u>
 
 ### Profile Features
 Users can personalize their account and view information about other users.
