@@ -276,7 +276,7 @@ class SocialMediaApp:
             print(f"[ERROR] Could not read messages: {error}")
 
     # ADDITIONAL FEATURES OF OUR CHOICE
-    # update bio [fio] + follow/unfollow users [sophia]
+    # update bio & view users [fio] + follow/unfollow users [sophia]
 
     def update_bio(self):
         if not self.require_login():
@@ -290,6 +290,13 @@ class SocialMediaApp:
         self.accounts[self.current_user]["bio"] = bio
         self.save_accounts()
         print("Bio/status updated successfully.")
+    
+    def view_users(self):
+        print("\n ===== USERS =====")
+        for username in sorted(self.accounts):
+            bio = self.accounts[username].get("bio", "")
+            created_at = self.accounts[username].get("created_at", "unknown date")
+            print(f"{username} | Bio: {bio if bio else '(no bio)'} | Account Created: {created_at}")
 
     def follow_user(self, username):
         """
