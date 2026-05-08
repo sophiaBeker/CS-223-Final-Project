@@ -10,10 +10,11 @@ def display_menu():
     print("6. Send Message")
     print("7. Read Messages")
     print("8. Update Bio")
-    print("9. Follow User")
-    print("10. Unfollow User")
-    print("11. View Following")
-    print("12. Exit")
+    print("9. View all Users")
+    print("10. Follow User")
+    print("11. Unfollow User")
+    print("12. View Following")
+    print("13. Exit")
 
 
 def main():
@@ -63,22 +64,26 @@ def main():
         elif choice == "8":
             app.update_bio()
 
-        # FOLLOW USER
+        # VIEW ALL USERS + THEIR BIOS/STATUS
         elif choice == "9":
+            app.view_users()
+
+        # FOLLOW USER
+        elif choice == "10":
             username = input("Enter username to follow: ").strip()
             app.follow_user(username)
 
         # UNFOLLOW USER
-        elif choice == "10":
+        elif choice == "11":
             username = input("Enter username to unfollow: ").strip()
             app.unfollow_user(username)
 
         # VIEW FOLLOWING
-        elif choice == "11":
+        elif choice == "12":
             app.view_following()
 
         # EXIT
-        elif choice == "12":
+        elif choice == "13":
             print("Goodbye!")
             break
 
