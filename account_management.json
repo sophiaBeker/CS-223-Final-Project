@@ -1,7 +1,7 @@
 {
-  "instructor": {
-    "password": "123",
-    "bio": "instructor's test account",
-    "account_created": "2026-05-08 00:00:00"
-  }
+    "instructor": {
+        "password": "123",
+        "bio": "instructor's test account",
+        "account_created": "2026-05-08 00:00:00"
+    }
 }
