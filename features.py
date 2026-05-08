@@ -127,9 +127,67 @@ def create_account(self):
 
 # MESSAGING FEATURES
 # send msg, read msg
+def send_message(self, recipient, message):
+    """
+    Send a message from the current logged-in user to another user.
+    """
+
+    # Make sure someone is logged in
+    if not self.current_user:
+        print("[ERROR] You must be logged in to send messages.")
+        return
+
+    # Make sure recipient exists
+    if recipient not in self.accounts:
+        print("[ERROR] Recipient account does not exist.")
+        return
+
+    timestamp = self.timestamp()
+
+    try:
+        with open(self.message_file, "a") as file:
+            file.write(
+                f"{timestamp} | FROM: {self.current_user} | "
+                f"TO: {recipient} | MESSAGE: {message}\n"
+            )
+
+        print("[SUCCESS] Message sent.")
+
+    except OSError as error:
+        print(f"[ERROR] Could not send message: {error}")
+
+
+def read_messages(self):
+    """
+    Read all messages sent to the current logged-in user.
+    """
+
+    # Make sure someone is logged in
+    if not self.current_user:
+        print("[ERROR] You must be logged in to read messages.")
+        return
+
+    try:
+        with open(self.message_file, "r") as file:
+            messages = file.readlines()
+
+        print("\n=== YOUR MESSAGES ===")
+
+        found = False
+
+        for msg in messages:
+            if f"TO: {self.current_user}" in msg:
+                print(msg.strip())
+                found = True
+
+        if not found:
+            print("No messages found.")
+
+    except OSError as error:
+        print(f"[ERROR] Could not read messages: {error}")
 
 # ADDITIONAL FEATURES OF OUR CHOICE
-# update bio [fio] + other feature [sophia]
+# update bio [fio] + follow/unfollow users [sophia]
 
 def update_bio(self):
     if not self.require_login():
@@ -143,6 +201,93 @@ def update_bio(self):
     self.accounts[self.current_user]["bio"] = bio
     self.save_accounts()
     print("Bio/status updated successfullly.")
+
+def follow_user(self, username):
+    """
+    Follow another user by username.
+    """
+
+    # Must be logged in
+    if not self.current_user:
+        print("[ERROR] You must be logged in.")
+        return
+
+    # User cannot follow themselves
+    if username == self.current_user:
+        print("[ERROR] You cannot follow yourself.")
+        return
+
+    # Check if account exists
+    if username not in self.accounts:
+        print("[ERROR] User does not exist.")
+        return
+
+    # Create following list if missing
+    if "following" not in self.accounts[self.current_user]:
+        self.accounts[self.current_user]["following"] = []
+
+    # Prevent duplicate follows
+    if username in self.accounts[self.current_user]["following"]:
+        print("[ERROR] You already follow this user.")
+        return
+
+    # Add user to following list
+    self.accounts[self.current_user]["following"].append(username)
+
+    # Save changes
+    self.save_accounts()
+
+    print(f"[SUCCESS] You are now following {username}.")
+
+
+def unfollow_user(self, username):
+    """
+    Unfollow another user by username.
+    """
+
+    # Must be logged in
+    if not self.current_user:
+        print("[ERROR] You must be logged in.")
+        return
+
+    # Check if following list exists
+    if "following" not in self.accounts[self.current_user]:
+        print("[ERROR] You are not following anyone.")
+        return
+
+    # Check if user is currently followed
+    if username not in self.accounts[self.current_user]["following"]:
+        print("[ERROR] You are not following this user.")
+        return
+
+    # Remove user
+    self.accounts[self.current_user]["following"].remove(username)
+
+    # Save changes
+    self.save_accounts()
+
+    print(f"[SUCCESS] You unfollowed {username}.")
+
+#HELPER: check followed accounts
+def view_following(self):
+    """
+    View all followed users.
+    """
+
+    if not self.current_user:
+        print("[ERROR] You must be logged in.")
+        return
+
+    following = self.accounts[self.current_user].get("following", [])
+
+    print("\n=== FOLLOWING ===")
+
+    if not following:
+        print("You are not following anyone.")
+        return
+
+    for user in following:
+        print(f"- {user}")
 
 # MENU (or move to main?) 
 # basic terminal menu [sophia]
