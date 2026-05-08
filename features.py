@@ -66,7 +66,35 @@ def timestamp(self):
 # HELPERS
 # username exits, logged in, require login, valid usrname, valid password
 
-def username
+def username_exists(self, username):
+    return username in self.accounts
+
+def is_logged_in(self):
+    return self.current_user is not None
+
+def require_login(self):
+    if not self.is_logged_in():
+        print("[ERROR] You need to be logged to use this feature.")
+        return False
+    return True
+
+def valid_username(self, username):
+    if not username:
+        return False, "Username cannot be empty."
+    if len(username) < 3:
+        return False, "Username must be at least 3 characters long."
+    if " " in username:
+        return False, "Username cannot contain spaces."
+    if not username.replace("_", "").isalnum():
+        return False, "Username can only contain letters, numbers, and underscores."
+    return True, ""
+
+def valid_password(self, password):
+    if not password: 
+        return False, "Password cannot be empty."
+    if len(password) < 3:
+        return False, "Password must be at least 3 characters long."
+    return True, ""
 
 # ACCOUNT FEATURES
 # create acct, login [fio]
