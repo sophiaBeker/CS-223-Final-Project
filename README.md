@@ -29,6 +29,7 @@ Users can personalize their account and view information about other users.
 - View account creation information
 
 ### Social Features
+Users can connect with other accounts using social media-style following features.
 - Follow and unfollow other users
 - Check the list of users you are following
 
