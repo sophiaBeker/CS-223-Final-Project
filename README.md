@@ -9,4 +9,4 @@ Features of this Social Media Application:
 
 Additional Features:
 * Allow users to update their profile bio/status
-* TBA
+* Alow users to follow/unfollow each other + Check their following list.

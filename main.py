@@ -1,6 +1,5 @@
 from features import SocialMediaApp
 
-
 def display_menu():
     print("\n===== SOCIAL MEDIA APP =====")
     print("1. Create Account")
