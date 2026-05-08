@@ -64,7 +64,6 @@ def timestamp(self):
 
 
 # HELPERS
-# username exits, logged in, require login, valid usrname, valid password
 
 def username_exists(self, username):
     return username in self.accounts
@@ -97,8 +96,33 @@ def valid_password(self, password):
     return True, ""
 
 # ACCOUNT FEATURES
-# create acct, login [fio]
-# logout, change pass, delete acct [sophia]
+# create acct [fio]
+# login, logout, change pass, delete acct [sophia]
+
+def create_account(self):
+    username = input("Choose a username: ").strip()
+    valid, message = self.valid_username(username)
+    if not valid:
+        print(f"[ERROR] {message}")
+        return
+    if self.username_exists(username):
+        print("[ERROR] Username already exists.")
+        return
+    
+    password = input ("Choose a password: ").strip()
+    valid, message = self.valid_password(password)
+    if not valid:
+        print(f"[ERROR] {message}")
+        return
+
+    self.accounts[username] = {
+        "password": password,
+        "bio": "", 
+        "created_at": self.timestamp(),
+    }
+
+    self.save_accounts()
+    print(f"Account created successfully for {username}")
 
 
 # MESSAGING FEATURES
