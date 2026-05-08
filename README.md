@@ -8,6 +8,5 @@ Features of this Social Media Application:
 * Send a message to another account/username
 
 Additional Features:
-* Allow users to update their profile bio/status
-* Allow users to view all users' status & account creation.
+* Allow users to update their profile bio/status, and view all users' status + account creation.
 * Allow users to follow/unfollow each other and check their following list.
