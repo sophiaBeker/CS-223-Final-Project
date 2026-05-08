@@ -131,5 +131,18 @@ def create_account(self):
 # ADDITIONAL FEATURES OF OUR CHOICE
 # update bio [fio] + other feature [sophia]
 
+def update_bio(self):
+    if not self.require_login():
+        return
+    
+    bio = input("Enter your new bio/status: ").strip()
+    if len(bio) > 120:
+        print("[ERROR] Bio/status must be 120 characters or fewer.")
+        return
+    
+    self.accounts[self.current_user]["bio"] = bio
+    self.save_accounts()
+    print("Bio/status updated successfullly.")
+
 # MENU (or move to main?) 
 # basic terminal menu [sophia]
