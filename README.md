@@ -9,4 +9,5 @@ Features of this Social Media Application:
 
 Additional Features:
 * Allow users to update their profile bio/status
-* Alow users to follow/unfollow each other + Check their following list.
+* Allow users to view all users' status & account creation.
+* Allow users to follow/unfollow each other and check their following list.
