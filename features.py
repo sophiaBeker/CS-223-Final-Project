@@ -65,18 +65,22 @@ class SocialMediaApp:
 
     # HELPERS
 
+    # check if user exists
     def username_exists(self, username):
         return username in self.accounts
 
+    # ensure user is logged in
     def is_logged_in(self):
         return self.current_user is not None
 
+    # user cannot use features unless logged in 
     def require_login(self):
         if not self.is_logged_in():
             print("[ERROR] You need to be logged to use this feature.")
             return False
         return True
 
+    # username validation 
     def valid_username(self, username):
         if not username:
             return False, "Username cannot be empty."
@@ -88,6 +92,7 @@ class SocialMediaApp:
             return False, "Username can only contain letters, numbers, and underscores."
         return True, ""
 
+    # password validation
     def valid_password(self, password):
         if not password: 
             return False, "Password cannot be empty."
@@ -96,9 +101,8 @@ class SocialMediaApp:
         return True, ""
 
     # ACCOUNT FEATURES
-    # create acct [fio]
-    # login, logout, change pass, delete acct [sophia]
 
+    # have user create their acct (user + pass)
     def create_account(self):
         username = input("Choose a username: ").strip()
         valid, message = self.valid_username(username)
@@ -276,8 +280,8 @@ class SocialMediaApp:
             print(f"[ERROR] Could not read messages: {error}")
 
     # ADDITIONAL FEATURES OF OUR CHOICE
-    # update bio & view users [fio] + follow/unfollow users [sophia]
 
+    # have user create a bio
     def update_bio(self):
         if not self.require_login():
             return
@@ -290,7 +294,8 @@ class SocialMediaApp:
         self.accounts[self.current_user]["bio"] = bio
         self.save_accounts()
         print("Bio/status updated successfully.")
-    
+
+    # view ALL users on the platform, their bio, and when their acct was created
     def view_users(self):
         print("\n ===== USERS =====")
         for username in sorted(self.accounts):
@@ -384,6 +389,3 @@ class SocialMediaApp:
 
         for user in following:
             print(f"- {user}")
-
-    # MENU (or move to main?) 
-    # basic terminal menu [sophia]
